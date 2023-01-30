@@ -5,8 +5,7 @@ menu members is not needed.
 2- A menu should have at least one item (in the constructor). If any additional items were needed, then the add new item
 method should be used.
 
-
-
+3- The program runs one time, if the user selects a feature he will get the result but then the program ends.
 
 
 

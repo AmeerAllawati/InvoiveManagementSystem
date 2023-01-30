@@ -15,7 +15,7 @@ public class ManagerApp {
         mainMenu.addItem(6, "Search (1) Invoice");
         mainMenu.addItem(7, "Program Statistics");
         mainMenu.addItem(8, "Exit");
-        
+
         // This is for adding sub-items for the first choice in the main menu (Shop Settings)
         MenuItems firstSubItems1 = new MenuItems(1, "Load Data"); 
         Menu shopSettingsSubMenu = new Menu("Shop Settings Sub Menu", firstSubItems1);
@@ -23,7 +23,7 @@ public class ManagerApp {
         shopSettingsSubMenu.addItem(3, "Set Invoice Header");
         shopSettingsSubMenu.addItem(4, "Go Back");
         mainMenu.menuItems.get(0).setAsMenu(shopSettingsSubMenu);
-        
+
         // Below is for adding sub-items for the second choice in the main menu (Manage Shop Items)
         MenuItems secondSubItems1 = new MenuItems(1, "Add Items");
         Menu manageShopSubItemsMenu = new Menu("Manage Shop Items Sub Menu", secondSubItems1);
@@ -32,23 +32,34 @@ public class ManagerApp {
         manageShopSubItemsMenu.addItem(4, "Report All Items");
         manageShopSubItemsMenu.addItem(5, "Go Back");
         mainMenu.menuItems.get(1).setAsMenu(manageShopSubItemsMenu);
-        
+
         mainMenu.printMenu();
-        
+
+        Shop mainShop = new Shop();
         //User input 
         Scanner sc = new Scanner(System.in);
         System.out.print("Please enter your choice: ");
-        
+
         int mainMenuUserInput = sc.nextInt();
         sc.nextLine();
-        
+
         switch(mainMenuUserInput) {
+        case 1:
+            mainMenu.menuItems.get(0).printItem();
+            System.out.print("Please enter your choice: ");
+            int shopSettingsUserInput = sc.nextInt();
+            sc.nextLine();
+            switch(shopSettingsUserInput) {
             case 1:
-                mainMenu.menuItems.get(0).printItem();
-                
+                mainShop.loadData(); //TODO: This needs to be changed, loading the data should read from a file.
                 break;
             case 2:
-                mainMenu.menuItems.get(1).printItem();
+                mainShop.saveData();
+                break;
+            }
+            break;
+        case 2:
+            mainMenu.menuItems.get(1).printItem();
         }
     }
 
