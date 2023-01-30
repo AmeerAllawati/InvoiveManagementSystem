@@ -83,12 +83,61 @@ public class ManagerApp {
 
                     mainShop.setInvoiveHeader(newPhone, newFax, newEmail, newWebsite);
                     break;
-                case 4:
-                    continue;
+                    case 4:
+                        continue;
                 }
                 break;
             case 2:
                 mainMenu.menuItems.get(1).printItem();
+                System.out.print("Please enter your choice: ");
+                int manageShopUserInput = sc.nextInt();
+                sc.nextLine();
+                switch(manageShopUserInput) {
+                case 1: 
+                    System.out.print("Enter the product ID: ");
+                    int productId = sc.nextInt();
+                    sc.nextLine();
+                    
+                    System.out.print("Enter the product name: ");
+                    String productName = sc.nextLine();
+                    
+                    System.out.print("Enter the product unit price: ");
+                    double productUnitPrice = sc.nextDouble();
+                    sc.nextLine();
+                    
+                    System.out.print("Enter the product quantity: ");
+                    int productQuantity = sc.nextInt();
+                    sc.nextLine();
+                    
+                    mainShop.addProduct(productId, productName, productUnitPrice, productQuantity);
+                    break;
+                case 2:
+                    System.out.print("Enter the product ID you want to delete: ");
+                    int deletedId = sc.nextInt();
+                    sc.nextLine();
+                    
+                    mainShop.deleteProduct(deletedId);
+                    break;
+                case 3:
+                    System.out.print("Enter the product ID you want to change the price of: ");
+                    int productToModifyId = sc.nextInt();
+                    sc.nextLine();
+                    
+                    System.out.print("Enter the new price of the mentioned product: ");
+                    double newProductPrice = sc.nextDouble();
+                    sc.nextLine();
+                    
+                    mainShop.products.get(productToModifyId).setUnitPrice(newProductPrice);
+                    break;
+                case 4:
+                    mainShop.printProducts();
+                    break;
+                case 5: 
+                    continue;
+                }
+                break;
+            case 3:
+                
             }
         }
 
