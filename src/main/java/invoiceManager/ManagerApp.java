@@ -1,5 +1,7 @@
 package invoiceManager;
 
+import java.util.Scanner;
+
 public class ManagerApp {
 
     public static void main(String[] args) {
@@ -14,7 +16,7 @@ public class ManagerApp {
         mainMenu.addItem(7, "Program Statistics");
         mainMenu.addItem(8, "Exit");
         
-        //This is for adding sub-items for the first choice in the main menu (Shop Settings)
+        // This is for adding sub-items for the first choice in the main menu (Shop Settings)
         MenuItems firstSubItems1 = new MenuItems(1, "Load Data"); 
         Menu shopSettingsSubMenu = new Menu("Shop Settings Sub Menu", firstSubItems1);
         shopSettingsSubMenu.addItem(2, "Set Shop Name");
@@ -32,6 +34,22 @@ public class ManagerApp {
         mainMenu.menuItems.get(1).setAsMenu(manageShopSubItemsMenu);
         
         mainMenu.printMenu();
+        
+        //User input 
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Please enter your choice: ");
+        
+        int mainMenuUserInput = sc.nextInt();
+        sc.nextLine();
+        
+        switch(mainMenuUserInput) {
+            case 1:
+                mainMenu.menuItems.get(0).printItem();
+                
+                break;
+            case 2:
+                mainMenu.menuItems.get(1).printItem();
+        }
     }
 
 }

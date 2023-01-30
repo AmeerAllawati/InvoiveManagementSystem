@@ -43,4 +43,16 @@ public class Product {
     public String getName() {
         return this.name;
     }
+    
+    public double getUnitPrice() {
+        return this.unitPrice;
+    }
+    
+    public int getQuantity() {
+        return this.quantity;
+    }
+    
+    public double getQtyAmountPP() {
+        return this.qtyAmountPP;
+    }
 }
