@@ -33,34 +33,64 @@ public class ManagerApp {
         manageShopSubItemsMenu.addItem(5, "Go Back");
         mainMenu.menuItems.get(1).setAsMenu(manageShopSubItemsMenu);
 
-        mainMenu.printMenu();
 
         Shop mainShop = new Shop();
-        //User input 
         Scanner sc = new Scanner(System.in);
-        System.out.print("Please enter your choice: ");
+        int mainMenuUserInput = 0;
+        boolean programEnded = false;
 
-        int mainMenuUserInput = sc.nextInt();
-        sc.nextLine();
+        while(!programEnded) {
+            mainMenu.printMenu();
 
-        switch(mainMenuUserInput) {
-        case 1:
-            mainMenu.menuItems.get(0).printItem();
+
+            //User input 
+
             System.out.print("Please enter your choice: ");
-            int shopSettingsUserInput = sc.nextInt();
+
+            mainMenuUserInput = sc.nextInt();
             sc.nextLine();
-            switch(shopSettingsUserInput) {
+
+            switch(mainMenuUserInput) {
             case 1:
-                mainShop.loadData(); //TODO: This needs to be changed, loading the data should read from a file.
+                mainMenu.menuItems.get(0).printItem();
+                System.out.print("Please enter your choice: ");
+                int shopSettingsUserInput = sc.nextInt();
+                sc.nextLine();
+                switch(shopSettingsUserInput) {
+                case 1:
+                    mainShop.loadData(); //TODO: This needs to be changed, loading the data should read from a file.
+                    break;
+                case 2:
+                    System.out.print("Please enter the new shop name: ");
+                    String newShopName = sc.nextLine();
+                    mainShop.setShopName(newShopName);
+                    //System.out.print(mainShop.shopName);
+                    break;
+                case 3: 
+                    System.out.print("Enter the new phone number: ");
+                    int newPhone = sc.nextInt();
+                    sc.nextLine();
+
+                    System.out.print("Enter the new fax number: ");
+                    int newFax = sc.nextInt();
+                    sc.nextLine();
+
+                    System.out.print("Enter the new Email: ");
+                    String newEmail = sc.nextLine();
+
+                    System.out.print("Enter the new website: ");
+                    String newWebsite = sc.nextLine();
+
+                    mainShop.setInvoiveHeader(newPhone, newFax, newEmail, newWebsite);
+                    break;
+                case 4:
+                    continue;
+                }
                 break;
             case 2:
-                mainShop.saveData();
-                break;
+                mainMenu.menuItems.get(1).printItem();
             }
-            break;
-        case 2:
-            mainMenu.menuItems.get(1).printItem();
         }
-    }
 
+    }
 }
