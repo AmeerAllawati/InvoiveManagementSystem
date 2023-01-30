@@ -12,8 +12,8 @@ public class Menu {
         this.menuName = menuName;
     }
     
-    public void addItem(MenuItems newItem) {
-        menuItems.add(newItem);
+    public void addItem(int id, String menuName) {
+        menuItems.add(new MenuItems(id, menuName));
     }
 
     public void printMenu() {
