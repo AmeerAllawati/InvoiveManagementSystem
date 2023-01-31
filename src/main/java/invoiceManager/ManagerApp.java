@@ -76,12 +76,12 @@ public class ManagerApp {
                     break;
                 case 3: 
                     System.out.print("Enter the new phone number: ");
-                    int newPhone = sc.nextInt();
-                    sc.nextLine();
+                    int newPhone = Integer.parseInt(sc.nextLine());
+                    //sc.nextLine();
 
                     System.out.print("Enter the new fax number: ");
-                    int newFax = sc.nextInt();
-                    sc.nextLine();
+                    int newFax = Integer.parseInt(sc.nextLine());
+                    //sc.nextLine();
 
                     System.out.print("Enter the new Email: ");
                     String newEmail = sc.nextLine();

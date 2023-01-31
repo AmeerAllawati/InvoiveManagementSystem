@@ -1,12 +1,18 @@
 package invoiceManager;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import com.google.gson.reflect.TypeToken;
+
 public class Shop {
-    public String shopName;
+    public String shopName = null;
     public int tel;
     public int fax;
     public String email;
@@ -73,12 +79,34 @@ public class Shop {
     }
     public void loadData() {
         // TODO: Change loading the data so that it loads the information from a file
-        System.out.println("There are "+ invoices.size() + " invoices and " + products.size() + " products.");
+        Gson gson = new Gson();
+        try(BufferedReader reader = new BufferedReader(new FileReader("shopInfo.json"))) {
+            Shop decerializedShop = gson.fromJson(reader, new TypeToken<Shop>(){}.getType());
+            this.shopName = decerializedShop.shopName;
+            this.tel = decerializedShop.tel;
+            this.fax = decerializedShop.fax;
+            this.email = decerializedShop.email;
+            this.website = decerializedShop.website;
+            this.invoices = decerializedShop.invoices;
+            this.products = decerializedShop.products;
+            
+            System.out.println("Shop name:" + this.shopName);
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
     }
     public void saveData() {
-        //        Gson gson = new Gson();
-        //        String output = gson.toJson(this);
-        //        System.out.print(output);
+        Gson gson = new Gson();
+        String output = gson.toJson(this);
+        System.out.print(output);
+        
+        try(FileWriter writer = new FileWriter("shopInfo.json")) {
+            writer.write(output);
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public double totalSales() {
