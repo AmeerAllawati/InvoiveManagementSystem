@@ -12,7 +12,7 @@ public class Invoice {
     
     public Invoice(String customerName, int customerPhone, String invoiveDate, int numberOfItems, double totalAmount, double paidAmount, 
             double balance) {
-        // TODO Auto-generated constructor stub
+
         this.customerName = customerName;
         this.customerPhone = customerPhone;
         this.invoiceDate = invoiveDate;

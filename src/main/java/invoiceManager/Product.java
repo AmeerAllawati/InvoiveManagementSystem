@@ -10,7 +10,6 @@ public class Product {
     public static int numOfProducts = 0;
     
     public Product(int id, String name, double unitPrice, int quantity) {
-        // TODO Auto-generated constructor stub
         this.id = id;
         this.name = name;
         this.unitPrice = unitPrice;

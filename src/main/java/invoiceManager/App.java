@@ -3,7 +3,7 @@ package invoiceManager;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class ManagerApp {
+public class App {
 
     public static void main(String[] args) {
         //Add main menu items
@@ -61,7 +61,6 @@ public class ManagerApp {
                     sc.nextLine();
                     break;
                 } catch (Exception e) {
-                    // TODO: handle exception
                     System.out.println("Invalid input, try again");
                     sc.nextLine();
                 }

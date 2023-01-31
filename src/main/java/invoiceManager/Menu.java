@@ -7,7 +7,6 @@ public class Menu {
     public ArrayList<MenuItems> menuItems = new ArrayList<MenuItems>();
     
     public Menu(String menuName, MenuItems newItem) {
-        // TODO Auto-generated constructor stub
         menuItems.add(newItem);
         this.menuName = menuName;
     }
@@ -17,7 +16,6 @@ public class Menu {
     }
 
     public void printMenu() {
-        // TODO Auto-generated method stub
         System.out.println(menuName);
         for (MenuItems items : menuItems) {
             items.printItem();
@@ -25,7 +23,6 @@ public class Menu {
     }
 
     public void printSubMenu() {
-        // TODO Auto-generated method stub
         for (MenuItems items : menuItems) {
             items.printSubItem();
         }

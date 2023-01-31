@@ -55,7 +55,6 @@ public class Shop {
         try {
             this.returnGivenProduct(id).setUnitPrice(newPrice);
         } catch (NullPointerException e) {
-            // TODO: handle exception
             e.printStackTrace();
         }
         
@@ -83,7 +82,6 @@ public class Shop {
                     ", Customer name: " + invoices.get(id-1).invoiceDate + ", Number of items: " + invoices.get(id-1).numberOfItems +
                     ", Total: " + invoices.get(id-1).totalAmount + ", Balance: " + invoices.get(id-1).balance);
         } catch (IndexOutOfBoundsException e) {
-            // TODO: handle exception
             e.printStackTrace();
             
         }
@@ -121,7 +119,6 @@ public class Shop {
             
             System.out.println("Shop name:" + this.shopName);
         } catch (Exception e) {
-            // TODO: handle exception
             e.printStackTrace();
         }
     }

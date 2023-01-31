@@ -4,14 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import invoiceManager.Product;
 
-/**
- * 
- */
-
-/**
- * @author LAP-1
- *
- */
 class simpleTest {
 
     @Test
