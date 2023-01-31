@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class ManagerApp {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
+        //Add main menu items
         MenuItems firstItems = new MenuItems(1, "Shop Settings");
         Menu mainMenu = new Menu("Main Menu", firstItems);
         mainMenu.addItem(2, "Manage Shop Items");
@@ -34,7 +34,7 @@ public class ManagerApp {
         manageShopSubItemsMenu.addItem(5, "Go Back");
         mainMenu.menuItems.get(1).setAsMenu(manageShopSubItemsMenu);
 
-
+        //Initializing important variables
         Shop mainShop = new Shop();
         Scanner sc = new Scanner(System.in);
         int mainMenuUserInput = 0;
@@ -47,13 +47,12 @@ public class ManagerApp {
         int sixthOptionCounter = 0;
         int seventhOptionCounter = 0;
 
-        while(!programEnded) {
+        // main program loop
+        while(!programEnded) { 
             mainMenu.printMenu();
 
 
-            //User input 
-
-
+            //User input for the main menu
 
             while(true) {
                 try {
@@ -69,6 +68,7 @@ public class ManagerApp {
             }
 
             switch(mainMenuUserInput) {
+            // if user chose 1 in the main menu
             case 1:
                 firstOptionCounter++;
                 mainMenu.menuItems.get(0).printItem();
@@ -171,6 +171,7 @@ public class ManagerApp {
                     System.out.println("Invalid input");
                 }
                 break;
+            // if user chose 2 in the main menu
             case 2:
                 secondOptionCounter++;
                 mainMenu.menuItems.get(1).printItem();
@@ -297,7 +298,7 @@ public class ManagerApp {
                     }
                     
 
-                    mainShop.products.get(productToModifyId).setUnitPrice(newProductPrice);
+                    mainShop.changeItemPrice(productToModifyId, newProductPrice);;
                     break;
                 case 4:
                     mainShop.printProducts();
@@ -308,6 +309,7 @@ public class ManagerApp {
                     System.out.println("Invalid Input");
                 }
                 break;
+            // if user chose 3 in the main menu
             case 3:
                 thirdOptionCounter++;
                 // take user input for a new invoice
@@ -316,7 +318,6 @@ public class ManagerApp {
                     try {
                         System.out.print("Enter the name of the customer: ");
                         customerName = sc.nextLine();
-                        sc.nextLine();
                         break;
                     } catch (Exception e) {
                         // TODO: handle exception
@@ -400,7 +401,7 @@ public class ManagerApp {
                     try {
                         System.out.print("Enter the balance: ");
                         balance = sc.nextDouble();
-                        sc.nextInt();
+                        sc.nextLine();
                         break;
                     } catch (Exception e) {
                         // TODO: handle exception
@@ -412,16 +413,19 @@ public class ManagerApp {
 
                 mainShop.addInvoice(customerName, customerPhone, invoiceDate, numberOfItems, totalAmount, paidAmount, balance);
                 break;
+            // if user chose 4 in the main menu
             case 4:
                 fourthOptionCounter++;
                 System.out.println("The number of items: " + mainShop.products.size());
                 System.out.println("The number of invoices: " + mainShop.invoices.size());
                 System.out.println("The total number of sales: " + mainShop.totalSales());
                 break;
+            // if user chose 5 in the main menu
             case 5:
                 fifthOptionCounter++;
                 mainShop.printInvoices();
                 break;
+            // if user chose 6 in the main menu
             case 6:
                 sixthOptionCounter++;
                 Integer searchedInvoice = 0;
@@ -440,6 +444,7 @@ public class ManagerApp {
                 
                 mainShop.printSingleInvoice(searchedInvoice);
                 break;
+            // if user chose 7 in the main menu
             case 7:
                 seventhOptionCounter++;
                 System.out.println("First option: " + firstOptionCounter);
@@ -450,6 +455,7 @@ public class ManagerApp {
                 System.out.println("Sixth option: " + sixthOptionCounter);
                 System.out.println("Seventh option: " + seventhOptionCounter);
                 break;
+            // if user chose 8 in the main menu
             case 8:
                 
                 System.out.println("Are you sure you want to exit?");

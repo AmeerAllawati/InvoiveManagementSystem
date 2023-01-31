@@ -30,6 +30,17 @@ public class Shop {
         products.add(new Product(id, name, unitPrice, quantity));
         saveData();
     }
+    
+    public Product returnGivenProduct(int id) {
+        for(Product singProduct : products) {
+            if (singProduct.getID() == id) {
+                return singProduct;
+            } else {
+                System.out.println("id not available!");
+            }
+        }
+        return null;
+    }
 
     public void deleteProduct(int id) {
         for(int i = 0; i < products.size(); ++i) {
@@ -41,7 +52,13 @@ public class Shop {
     }
 
     public void changeItemPrice(int id, double newPrice) {
-        products.get(id-1).setUnitPrice(newPrice);
+        try {
+            this.returnGivenProduct(id).setUnitPrice(newPrice);
+        } catch (NullPointerException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        
         saveData();
     }
 
@@ -55,15 +72,22 @@ public class Shop {
     public void printInvoices() {
         for(int i = 0; i < invoices.size(); i++) {
             System.out.println("Invoice number: " + (i+1) + ", Invoice date: " + invoices.get(i).invoiceDate + 
-                    ", Customer name: " + invoices.get(i).invoiceDate + ", Number of items: " + invoices.get(i).numberOfItems +
+                    ", Customer name: " + invoices.get(i).customerName + ", Number of items: " + invoices.get(i).numberOfItems +
                     ", Total: " + invoices.get(i).totalAmount + ", Balance: " + invoices.get(i).balance);
         }
     }
 
     public void printSingleInvoice(int id) {
-        System.out.println("Invoice number: " + (id) + ", Invoice date: " + invoices.get(id-1).invoiceDate + 
-                ", Customer name: " + invoices.get(id-1).invoiceDate + ", Number of items: " + invoices.get(id-1).numberOfItems +
-                ", Total: " + invoices.get(id-1).totalAmount + ", Balance: " + invoices.get(id-1).balance);
+        try {
+            System.out.println("Invoice number: " + (id) + ", Invoice date: " + invoices.get(id-1).invoiceDate + 
+                    ", Customer name: " + invoices.get(id-1).invoiceDate + ", Number of items: " + invoices.get(id-1).numberOfItems +
+                    ", Total: " + invoices.get(id-1).totalAmount + ", Balance: " + invoices.get(id-1).balance);
+        } catch (IndexOutOfBoundsException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            
+        }
+        
     }
 
     public void setShopName(String shopName) {
@@ -77,8 +101,13 @@ public class Shop {
         this.website = website;
         saveData();
     }
+    
+    /**
+     * Reads class information to an external JSON file using Gson.
+     * 
+     * This method uses Gson to de-serialize the saved .json file and loads it into the class. 
+     */
     public void loadData() {
-        // TODO: Change loading the data so that it loads the information from a file
         Gson gson = new Gson();
         try(BufferedReader reader = new BufferedReader(new FileReader("shopInfo.json"))) {
             Shop decerializedShop = gson.fromJson(reader, new TypeToken<Shop>(){}.getType());
@@ -96,6 +125,13 @@ public class Shop {
             e.printStackTrace();
         }
     }
+    
+    /**
+     * Writes class information to an external JSON file using Gson.
+     * 
+     * This method uses Gson to serialize the class information and save it to a specified file. 
+     * The file name is determined based on the class name and the ".json" extension.
+     */
     public void saveData() {
         Gson gson = new Gson();
         String output = gson.toJson(this);
