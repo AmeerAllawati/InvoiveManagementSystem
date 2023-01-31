@@ -137,7 +137,7 @@ public class ManagerApp {
                 }
                 break;
             case 3:
-                
+                // take user input for a new invoice
             }
         }
 
