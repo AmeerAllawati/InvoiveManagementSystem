@@ -1,5 +1,6 @@
 package invoiceManager;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ManagerApp {
@@ -52,90 +53,250 @@ public class ManagerApp {
 
             //User input 
 
-            System.out.print("Please enter your choice: ");
 
-            mainMenuUserInput = sc.nextInt();
-            sc.nextLine();
+
+            while(true) {
+                try {
+                    System.out.print("Please enter your choice: ");
+                    mainMenuUserInput = sc.nextInt();
+                    sc.nextLine();
+                    break;
+                } catch (Exception e) {
+                    // TODO: handle exception
+                    System.out.println("Invalid input, try again");
+                    sc.nextLine();
+                }
+            }
 
             switch(mainMenuUserInput) {
             case 1:
                 firstOptionCounter++;
                 mainMenu.menuItems.get(0).printItem();
-                System.out.print("Please enter your choice: ");
-                int shopSettingsUserInput = sc.nextInt();
-                sc.nextLine();
+                int shopSettingsUserInput = 0;
+                while(true) {
+                    try {
+                        System.out.print("Please enter your choice: ");
+                        shopSettingsUserInput = sc.nextInt();
+                        sc.nextLine();
+                        break;
+                    } catch (Exception e) {
+                        // TODO: handle exception
+                        System.out.println("Invalid input, try again");
+                        sc.nextLine();
+                    }
+                }
+
                 switch(shopSettingsUserInput) {
                 case 1:
                     mainShop.loadData(); //TODO: This needs to be changed, loading the data should read from a file.
                     break;
                 case 2:
-                    System.out.print("Please enter the new shop name: ");
-                    String newShopName = sc.nextLine();
+                    String newShopName = null;
+                    while(true) {
+                        try {
+                            System.out.print("Please enter the new shop name: ");
+                            newShopName = sc.nextLine();
+                            break;
+                        } catch (Exception e) {
+                            // TODO: handle exception
+                            System.out.println("Invalid input, try again");
+                            sc.nextLine();
+                        }
+                    }
                     mainShop.setShopName(newShopName);
                     //System.out.print(mainShop.shopName);
                     break;
-                case 3: 
-                    System.out.print("Enter the new phone number: ");
-                    int newPhone = Integer.parseInt(sc.nextLine());
+                case 3:
+                    int newPhone = 0;
+                    while(true) {
+                        try {
+                            System.out.print("Enter the new phone number: ");
+                            newPhone = Integer.parseInt(sc.nextLine());
+                            break;
+                        } catch (Exception e) {
+                            // TODO: handle exception
+                            System.out.println("Invalid input, try again");
+                            sc.nextLine();
+                        }
+                    }
                     //sc.nextLine();
 
-                    System.out.print("Enter the new fax number: ");
-                    int newFax = Integer.parseInt(sc.nextLine());
+                    int newFax = 0;
+                    while(true) {
+                        try {
+                            System.out.print("Enter the new fax number: ");
+                            newFax = Integer.parseInt(sc.nextLine());
+                            break;
+                        } catch (Exception e) {
+                            // TODO: handle exception
+                            System.out.println("Invalid input, try again");
+                            sc.nextLine();
+                        }
+                    }
+
                     //sc.nextLine();
 
-                    System.out.print("Enter the new Email: ");
-                    String newEmail = sc.nextLine();
+                    String newEmail = null;
+                    while(true) {
+                        try {
+                            System.out.print("Enter the new Email: ");
+                            newEmail = sc.nextLine();
+                            break;
+                        } catch (Exception e) {
+                            // TODO: handle exception
+                            System.out.println("Invalid input, try again");
+                            sc.nextLine();
+                        }
+                    }
 
-                    System.out.print("Enter the new website: ");
-                    String newWebsite = sc.nextLine();
+                    String newWebsite = null;
+                    while(true) {
+                        try {
+                            System.out.print("Enter the new website: ");
+                            newWebsite = sc.nextLine();
+                            break;
+                        } catch (Exception e) {
+                            // TODO: handle exception
+                            System.out.println("Invalid input, try again");
+                            sc.nextLine();
+                        }
+                    }
+
 
                     mainShop.setInvoiveHeader(newPhone, newFax, newEmail, newWebsite);
                     break;
-                    case 4:
-                        continue;
+                case 4:
+                    continue;
+                default:
+                    System.out.println("Invalid input");
                 }
                 break;
             case 2:
                 secondOptionCounter++;
                 mainMenu.menuItems.get(1).printItem();
-                System.out.print("Please enter your choice: ");
-                int manageShopUserInput = sc.nextInt();
-                sc.nextLine();
+                
+                int manageShopUserInput = 0;
+                while(true) {
+                    try {
+                        System.out.print("Please enter your choice: ");
+                        manageShopUserInput = sc.nextInt();
+                        sc.nextLine();
+                        break;
+                    } catch (Exception e) {
+                        // TODO: handle exception
+                        System.out.println("Invalid input, try again");
+                        sc.nextLine();
+                    }
+                }
+                
                 switch(manageShopUserInput) {
                 case 1: 
-                    System.out.print("Enter the product ID: ");
-                    int productId = sc.nextInt();
-                    sc.nextLine();
+                    int productId = 0;
+                    while(true) {
+                        try {
+                            System.out.print("Enter the product ID: ");
+                            productId = sc.nextInt();
+                            sc.nextLine();
+                            break;
+                        } catch (Exception e) {
+                            // TODO: handle exception
+                            System.out.println("Invalid input, try again");
+                            sc.nextLine();
+                        }
+                    }
                     
-                    System.out.print("Enter the product name: ");
-                    String productName = sc.nextLine();
+                    String productName = null;
+                    while(true) {
+                        try {
+                            System.out.print("Enter the product name: ");
+                            productName = sc.nextLine();
+                            break;
+                        } catch (Exception e) {
+                            // TODO: handle exception
+                            System.out.println("Invalid input, try again");
+                            sc.nextLine();
+                        }
+                    }
                     
-                    System.out.print("Enter the product unit price: ");
-                    double productUnitPrice = sc.nextDouble();
-                    sc.nextLine();
+                    double productUnitPrice = 0;
+                    while(true) {
+                        try {
+                            System.out.print("Enter the product unit price: ");
+                            productUnitPrice = sc.nextDouble();
+                            sc.nextLine();
+                            break;
+                        } catch (Exception e) {
+                            // TODO: handle exception
+                            System.out.println("Invalid input, try again");
+                            sc.nextLine();
+                        }
+                    }
                     
-                    System.out.print("Enter the product quantity: ");
-                    int productQuantity = sc.nextInt();
-                    sc.nextLine();
+                    int productQuantity =0;
+                    while(true) {
+                        try {
+                            System.out.print("Enter the product quantity: ");
+                            productQuantity = sc.nextInt();
+                            sc.nextLine();
+                            break;
+                        } catch (Exception e) {
+                            // TODO: handle exception
+                            System.out.println("Invalid input, try again");
+                            sc.nextLine();
+                        }
+                    }
                     
+
                     mainShop.addProduct(productId, productName, productUnitPrice, productQuantity);
                     break;
                 case 2:
-                    System.out.print("Enter the product ID you want to delete: ");
-                    int deletedId = sc.nextInt();
-                    sc.nextLine();
+                    int deletedId = 0;
+                    while(true) {
+                        try {
+                            System.out.print("Enter the product ID you want to delete: ");
+                            deletedId = sc.nextInt();
+                            sc.nextLine();
+                            break;
+                        } catch (Exception e) {
+                            // TODO: handle exception
+                            System.out.println("Invalid input, try again");
+                            sc.nextLine();
+                        }
+                    }
                     
+
                     mainShop.deleteProduct(deletedId);
                     break;
                 case 3:
-                    System.out.print("Enter the product ID you want to change the price of: ");
-                    int productToModifyId = sc.nextInt();
-                    sc.nextLine();
+                    int productToModifyId = 0;
+                    while(true) {
+                        try {
+                            System.out.print("Enter the product ID you want to change the price of: ");
+                            productToModifyId = sc.nextInt();
+                            sc.nextLine();
+                            break;
+                        } catch (Exception e) {
+                            // TODO: handle exception
+                            System.out.println("Invalid input, try again");
+                            sc.nextLine();
+                        }
+                    }
                     
-                    System.out.print("Enter the new price of the mentioned product: ");
-                    double newProductPrice = sc.nextDouble();
-                    sc.nextLine();
+                    double newProductPrice = 0;
+                    while(true) {
+                        try {
+                            System.out.print("Enter the new price of the mentioned product: ");
+                            newProductPrice = sc.nextDouble();
+                            sc.nextLine();
+                            break;
+                        } catch (Exception e) {
+                            // TODO: handle exception
+                            System.out.println("Invalid input, try again");
+                            sc.nextLine();
+                        }
+                    }
                     
+
                     mainShop.products.get(productToModifyId).setUnitPrice(newProductPrice);
                     break;
                 case 4:
@@ -143,36 +304,112 @@ public class ManagerApp {
                     break;
                 case 5: 
                     continue;
+                default:
+                    System.out.println("Invalid Input");
                 }
                 break;
             case 3:
                 thirdOptionCounter++;
                 // take user input for a new invoice
-                System.out.print("Enter the name of the customer: ");
-                String customerName = sc.nextLine();
+                String customerName = null;
+                while(true) {
+                    try {
+                        System.out.print("Enter the name of the customer: ");
+                        customerName = sc.nextLine();
+                        sc.nextLine();
+                        break;
+                    } catch (Exception e) {
+                        // TODO: handle exception
+                        System.out.println("Invalid input, try again");
+                        sc.nextLine();
+                    }
+                }
                 
-                System.out.print("Enter the phone number of the customer: ");
-                int customerPhone = sc.nextInt();
-                sc.nextLine();
+
+                int customerPhone = 0;
+                while(true) {
+                    try {
+                        System.out.print("Enter the phone number of the customer: ");
+                        customerPhone = sc.nextInt();
+                        sc.nextLine();
+                        break;
+                    } catch (Exception e) {
+                        // TODO: handle exception
+                        System.out.println("Invalid input, try again");
+                        sc.nextLine();
+                    }
+                }
                 
-                System.out.print("Enter the date of the invoice: ");
-                String invoiceDate = sc.nextLine();
+                String invoiceDate = null;
+                while(true) {
+                    try {
+                        System.out.print("Enter the date of the invoice: ");
+                        invoiceDate = sc.nextLine();
+                        break;
+                    } catch (Exception e) {
+                        // TODO: handle exception
+                        System.out.println("Invalid input, try again");
+                        sc.nextLine();
+                    }
+                }
                 
-                System.out.print("Enter the number of items: ");
-                int numberOfItems = sc.nextInt();
+                int numberOfItems = 0;
+                while(true) {
+                    try {
+                        System.out.print("Enter the number of items: ");
+                        numberOfItems = sc.nextInt();
+                        sc.nextLine();
+                        break;
+                    } catch (Exception e) {
+                        // TODO: handle exception
+                        System.out.println("Invalid input, try again");
+                        sc.nextLine();
+                    }
+                }
                 
-                System.out.print("Enter the total amount: ");
-                double totalAmount = sc.nextDouble();
-                sc.nextLine();
+                double totalAmount = 0;
+                while(true) {
+                    try {
+                        System.out.print("Enter the total amount: ");
+                        totalAmount = sc.nextDouble();
+                        sc.nextLine();
+                        break;
+                    } catch (Exception e) {
+                        // TODO: handle exception
+                        System.out.println("Invalid input, try again");
+                        sc.nextLine();
+                    }
+                }
                 
-                System.out.print("Enter the paid amount: ");
-                double paidAmount = sc.nextDouble();
-                sc.nextLine();
+                double paidAmount = 0;
+                while(true) {
+                    try {
+                        System.out.print("Enter the paid amount: ");
+                        paidAmount = sc.nextDouble();
+                        sc.nextLine();
+                        break;
+                    } catch (Exception e) {
+                        // TODO: handle exception
+                        System.out.println("Invalid input, try again");
+                        sc.nextLine();
+                    }
+                }
                 
-                System.out.print("Enter the balance: ");
-                double balance = sc.nextDouble();
-                sc.nextInt();
+                double balance = 0;
+                while(true) {
+                    try {
+                        System.out.print("Enter the balance: ");
+                        balance = sc.nextDouble();
+                        sc.nextInt();
+                        break;
+                    } catch (Exception e) {
+                        // TODO: handle exception
+                        System.out.println("Invalid input, try again");
+                        sc.nextLine();
+                    }
+                }
                 
+
                 mainShop.addInvoice(customerName, customerPhone, invoiceDate, numberOfItems, totalAmount, paidAmount, balance);
                 break;
             case 4:
@@ -187,9 +424,20 @@ public class ManagerApp {
                 break;
             case 6:
                 sixthOptionCounter++;
-                System.out.print("Enter the invoice number you want to search: ");
-                int searchedInvoice = sc.nextInt();
-                sc.nextLine();
+                Integer searchedInvoice = 0;
+                while(true) {
+                    try {
+                        System.out.print("Enter the invoice number you want to search: ");
+                        searchedInvoice = sc.nextInt();
+                        sc.nextLine();
+                        break;
+                    } catch (Exception e) {
+                        // TODO: handle exception
+                        System.out.println("Invalid input, try again");
+                        sc.nextLine();
+                    }
+                }
+                
                 mainShop.printSingleInvoice(searchedInvoice);
                 break;
             case 7:
@@ -203,14 +451,17 @@ public class ManagerApp {
                 System.out.println("Seventh option: " + seventhOptionCounter);
                 break;
             case 8:
+                
                 System.out.println("Are you sure you want to exit?");
                 String userResponse = sc.nextLine();
-                
+
                 if (userResponse.contains("Yes") || userResponse.contains("yes")) {
                     System.out.println("Program Ended!");
                     programEnded = true;
                 }
                 break;
+            default:
+                System.out.println("Invalid input");
             }
         }
 
