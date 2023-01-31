@@ -8,7 +8,7 @@ public class Invoice {
     public double totalAmount;
     public double paidAmount;
     public double balance;
-    public static int counter = 0;
+    public static int numOfInvoices = 0;
     
     public Invoice(String customerName, int customerPhone, String invoiveDate, int numberOfItems, double totalAmount, double paidAmount, 
             double balance) {
@@ -20,6 +20,6 @@ public class Invoice {
         this.totalAmount = totalAmount;
         this.paidAmount = paidAmount;
         this.balance = balance;
-        counter++;
+        numOfInvoices++;
     }
 }

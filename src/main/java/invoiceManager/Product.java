@@ -7,6 +7,7 @@ public class Product {
     private double unitPrice;
     private int quantity;
     private double qtyAmountPP;
+    public static int numOfProducts = 0;
     
     public Product(int id, String name, double unitPrice, int quantity) {
         // TODO Auto-generated constructor stub
@@ -14,6 +15,7 @@ public class Product {
         this.name = name;
         this.unitPrice = unitPrice;
         this.quantity = quantity;
+        numOfProducts++;
     }
     
     public void setID(int id) {
