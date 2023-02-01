@@ -1,0 +1,19 @@
+Assumption:
+1- Menu is not created by the user, it is created by the system manager hence the input validation for setting the 
+menu members is not needed.
+
+2- A menu should have at least one item (in the constructor). If any additional items were needed, then the add new item
+method should be used.
+
+3- The program runs one time, if the user selects a feature he will get the result but then the program ends.
+
+4- The program does not load automatically, the load option needs to be pressed first.
+
+
+
+
+
+
+--Data Structure usage for the menu:
+The data structure used was the ArrayList because it can handle the menu items and it is easy to manipulate 
+(add/modify/delete)

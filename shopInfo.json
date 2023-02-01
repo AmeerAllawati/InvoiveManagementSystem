@@ -1,0 +1,1 @@
+{"shopName":"The best shop","tel":99999,"fax":7777,"email":"alla@gmail.com","website":".com","invoices":[{"customerName":"Ameer","customerPhone":6666,"invoiceDate":"3/3/2022","numberOfItems":9,"totalAmount":17.0,"paidAmount":17.0,"balance":0.0}],"products":[{"id":5,"name":"cucumber","unitPrice":6.0,"quantity":5,"qtyAmountPP":0.0}]}
